@@ -39,7 +39,7 @@ public class TbVpFraActivity extends AppCompatActivity implements View.OnClickLi
         int id = v.getId();
         switch (id) {
             case R.id.btn_add:
-                index = ++index;
+                index = index+1;
                 name = "第" + index + "个界面";
                 tbVpAdapter.addFragment(new ShowFragment(), name);
                 break;

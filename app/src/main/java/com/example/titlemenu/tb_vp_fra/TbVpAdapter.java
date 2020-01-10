@@ -1,6 +1,7 @@
 package com.example.titlemenu.tb_vp_fra;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -55,6 +56,12 @@ public class TbVpAdapter extends FragmentStatePagerAdapter {
     }
 
     void removeIndexData(String title) {
+
+        if (fragmentNames.size() <= 2) {
+            Log.d(TAG, "数据禁止小于2");
+            return;
+        }
+
         if (mTitles != null) {
             mTitles.remove(title);
         }
