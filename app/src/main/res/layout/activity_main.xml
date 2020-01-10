@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <Button
+            android:id="@+id/btn_tb_fra_vp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tb_vp_fra" />
+
+        <Button
+            android:id="@+id/btn_rlv_frg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/rlv_fra" />
+
+        <Button
+            android:id="@+id/btn_sl_tv_vp_fra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sl_tv_vp_fra" />
+    </LinearLayout>
+
+</FrameLayout>

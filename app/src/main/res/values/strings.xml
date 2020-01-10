@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TitleMenu</string>
+    <string name="tb_vp_fra">tb+vp+fra</string>
+    <string name="rlv_fra">rlv+fra</string>
+    <string name="sl_tv_vp_fra">sl+tv+vp+fra</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add">增加</string>
+    <string name="delete">删除</string>
+</resources>
