@@ -1,7 +1,7 @@
 package com.example.titlemenu.tb_vp_fra;
 
 import android.util.Log;
-import android.widget.Toast;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,10 +29,12 @@ public class TbVpAdapter extends FragmentStatePagerAdapter {
     private List<Class> fragmentNames;   //创建List来管理 Fragment的 Class
     private List<String> mTitles;
     private Map<String, Class> mStringClassMap;
-
+    private FragmentManager fm;
+    private int mChildCount = 0;
 
     TbVpAdapter(FragmentManager fm) {
         super(fm);
+        this.fm = fm;
         fragmentNames = new ArrayList<>();
         mTitles = new ArrayList<>();
         mStringClassMap = new HashMap<>();
@@ -50,15 +52,14 @@ public class TbVpAdapter extends FragmentStatePagerAdapter {
 
         if (fragment != null) {
             fragmentNames.add(fragment.getClass());
-            //更新界面
-            notifyDataSetChanged();
         }
+        notifyDataSetChanged();
     }
 
     void removeIndexData(String title) {
 
-        if (fragmentNames.size() <= 2) {
-            Log.d(TAG, "数据禁止小于2");
+        if (fragmentNames.size() <= 1) {
+            Log.d(TAG, "至少保留一个界面");
             return;
         }
 
@@ -71,10 +72,25 @@ public class TbVpAdapter extends FragmentStatePagerAdapter {
         }
         if (fragmentNames != null) {
             fragmentNames.remove(fragment);
-            //更新界面
-            notifyDataSetChanged();
         }
+        notifyDataSetChanged();
     }
+
+    @Override
+    public void notifyDataSetChanged() {
+        mChildCount = getCount();
+        super.notifyDataSetChanged();
+    }
+
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        if (mChildCount > 0) {
+            mChildCount--;
+            return POSITION_NONE;
+        }
+        return super.getItemPosition(object);
+    }
+
 
     @NonNull
     @Override
@@ -87,6 +103,7 @@ public class TbVpAdapter extends FragmentStatePagerAdapter {
         return null;
     }
 
+
     @Override
     public int getCount() {
         return fragmentNames.size();
@@ -95,8 +112,30 @@ public class TbVpAdapter extends FragmentStatePagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        Log.d(TAG, String.valueOf(mTitles));
+        Log.d(TAG, String.valueOf(fragmentNames.size()));
         return mTitles.get(position);
     }
 
+    @NonNull
+    @Override
+    public Fragment instantiateItem(@NonNull ViewGroup container, int position) {
+        Fragment fragment = (Fragment) super.instantiateItem(container, position);
+        fm.beginTransaction().show(fragment).commit();
+        return fragment;
+    }
+
+    @Override
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+        if (position >= getCount()) {
+            return;
+        }
+        Fragment fragment = null;
+        try {
+            fragment = (Fragment) fragmentNames.get(position).newInstance();
+        } catch (IllegalAccessException | InstantiationException e) {
+            e.printStackTrace();
+        }
+        if (fragment != null)
+            fm.beginTransaction().detach(fragment).commit();
+    }
 }
