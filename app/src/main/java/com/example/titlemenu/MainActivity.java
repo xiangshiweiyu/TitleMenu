@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.titlemenu.tb_vp_fra.TbVpAdapter;
+import com.example.titlemenu.tb_rlv.TbRlvActivity;
 import com.example.titlemenu.tb_vp_fra.TbVpFraActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btn_rlv_frg:
+                intent = new Intent(this, TbRlvActivity.class);
+                startActivity(intent);
                 break;
             case R.id.btn_sl_tv_vp_fra:
                 break;
