@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">TitleMenu</string>
     <string name="tb_vp_fra">tb+vp+fra</string>
-    <string name="rlv_fra">rlv+fra</string>
-    <string name="sl_tv_vp_fra">sl+tv+vp+fra</string>
+    <string name="tb_rlv">tb+rlv</string>
+    <string name="rb_sl_vp_fra">rb+sl+vp+fra</string>
+    <string name="tb_fra_vp2">tb+vp2+fra</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add">增加</string>
     <string name="delete">删除</string>
     <string name="title">初始化标题</string>
+    <string name="first">初始化界面</string>
 </resources>

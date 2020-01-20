@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".tb_vp_fra.TbVpFraActivity">
+    tools:context=".rb_sl_vp_frg.RbSlVpFraActivity">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tb_vp"
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@+id/btn_add"
-            app:tabIndicatorColor="@color/blueSys"
-            app:tabIndicatorFullWidth="false"
-            app:tabMode="scrollable"
-            app:tabRippleColor="@android:color/transparent"
-            app:tabSelectedTextColor="@color/blueSys"
-            app:tabTextColor="@color/blackSys" />
+            android:layout_alignTop="@+id/btn_add"
+            android:layout_alignBottom="@+id/btn_add"
+            android:layout_toStartOf="@+id/btn_add">
+
+            <RadioGroup
+                android:id="@+id/rg_rb_sl_vp_fra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
 
         <Button
             android:id="@+id/btn_add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_toStartOf="@+id/btn_delete"
             android:minWidth="0dp"
             android:paddingStart="10dp"
@@ -37,7 +40,7 @@
         <Button
             android:id="@+id/btn_delete"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:minWidth="0dp"
             android:paddingStart="10dp"
@@ -47,12 +50,7 @@
     </RelativeLayout>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/vp_tb"
+        android:id="@+id/vp_tb_sl_vp_frg"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <!--    <androidx.viewpager.widget.ViewPager-->
-    <!--        android:id="@+id/vp_tb"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent" />-->
-
 </LinearLayout>

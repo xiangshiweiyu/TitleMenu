@@ -10,11 +10,14 @@ import com.example.titlemenu.Constant;
 import com.example.titlemenu.R;
 import com.google.android.material.tabs.TabLayout;
 
+import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT;
+import static androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_SET_USER_VISIBLE_HINT;
+
 public class TbVpFraActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-    private int index = 1;
-    private TbVpAdapter tbVpAdapter;
+    private static final String TAG = "TbVpFraActivity";
+    private int tag = 1;
+    private TbVpFraAdapter mTbVpFraAdapter;
 
 
     @Override
@@ -26,9 +29,9 @@ public class TbVpFraActivity extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.btn_add).setOnClickListener(this);
         findViewById(R.id.btn_delete).setOnClickListener(this);
 
-        tbVpAdapter = new TbVpAdapter(getSupportFragmentManager());
-        tbVpAdapter.addFragment(new ShowFragment(), "初始界面");
-        vpTb.setAdapter(tbVpAdapter);
+        mTbVpFraAdapter = new TbVpFraAdapter(getSupportFragmentManager(),BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        mTbVpFraAdapter.addFragment(new ShowFragment(), "初始界面");
+        vpTb.setAdapter(mTbVpFraAdapter);
         tbVp.setupWithViewPager(vpTb);
 
     }
@@ -38,12 +41,12 @@ public class TbVpFraActivity extends AppCompatActivity implements View.OnClickLi
         int id = v.getId();
         switch (id) {
             case R.id.btn_add:
-                index = index + 1;
-                Constant.tb_vp_fra_tag = "第" + index + "个界面";
-                tbVpAdapter.addFragment(new ShowFragment(), Constant.tb_vp_fra_tag);
+                tag = tag + 1;
+                Constant.tb_vp_fra_tag = "第" + tag + "个界面";
+                mTbVpFraAdapter.addFragment(new ShowFragment(), Constant.tb_vp_fra_tag);
                 break;
             case R.id.btn_delete:
-                tbVpAdapter.removeIndexData(Constant.tb_vp_fra_tag);
+                mTbVpFraAdapter.removeIndexData(Constant.tb_vp_fra_tag);
                 break;
         }
     }

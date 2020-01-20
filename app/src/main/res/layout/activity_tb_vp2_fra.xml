@@ -46,8 +46,8 @@
             tools:ignore="RelativeOverlap" />
     </RelativeLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/vp_tb"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp2_tb"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <!--    <androidx.viewpager.widget.ViewPager-->

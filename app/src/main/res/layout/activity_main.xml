@@ -20,16 +20,22 @@
             android:text="@string/tb_vp_fra" />
 
         <Button
-            android:id="@+id/btn_rlv_frg"
+            android:id="@+id/btn_tb_rlv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/rlv_fra" />
+            android:text="@string/tb_rlv" />
 
         <Button
-            android:id="@+id/btn_sl_tv_vp_fra"
+            android:id="@+id/btn_rb_sl_vp_frg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sl_tv_vp_fra" />
+            android:text="@string/rb_sl_vp_fra" />
+
+        <Button
+            android:id="@+id/btn_tb_fra_vp2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tb_fra_vp2" />
     </LinearLayout>
 
 </FrameLayout>

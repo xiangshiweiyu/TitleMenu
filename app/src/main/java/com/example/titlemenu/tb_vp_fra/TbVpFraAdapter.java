@@ -1,7 +1,6 @@
 package com.example.titlemenu.tb_vp_fra;
 
 import android.util.Log;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,19 +21,27 @@ import java.util.Map;
  * UpdateName;
  * UpdateContent:
  */
-public class TbVpAdapter extends FragmentStatePagerAdapter {
+public class TbVpFraAdapter extends FragmentStatePagerAdapter {
 
-    private static final String TAG = "标题";
+    private static final String TAG = "TbVpFraActivity";
 
     private List<Class> fragmentNames;   //创建List来管理 Fragment的 Class
     private List<String> mTitles;
     private Map<String, Class> mStringClassMap;
-    private FragmentManager fm;
+    //    private FragmentManager fm;
     private int mChildCount = 0;
 
-    TbVpAdapter(FragmentManager fm) {
+    TbVpFraAdapter(FragmentManager fm) {
         super(fm);
-        this.fm = fm;
+        //        this.fm = fm;
+        fragmentNames = new ArrayList<>();
+        mTitles = new ArrayList<>();
+        mStringClassMap = new HashMap<>();
+    }
+
+    TbVpFraAdapter(@NonNull FragmentManager fm, int behavior) {
+        super(fm, behavior);
+        //        this.fm = fm;
         fragmentNames = new ArrayList<>();
         mTitles = new ArrayList<>();
         mStringClassMap = new HashMap<>();
@@ -116,26 +123,26 @@ public class TbVpAdapter extends FragmentStatePagerAdapter {
         return mTitles.get(position);
     }
 
-    @NonNull
-    @Override
-    public Fragment instantiateItem(@NonNull ViewGroup container, int position) {
-        Fragment fragment = (Fragment) super.instantiateItem(container, position);
-        fm.beginTransaction().show(fragment).commit();
-        return fragment;
-    }
-
-    @Override
-    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        if (position >= getCount()) {
-            return;
-        }
-        Fragment fragment = null;
-        try {
-            fragment = (Fragment) fragmentNames.get(position).newInstance();
-        } catch (IllegalAccessException | InstantiationException e) {
-            e.printStackTrace();
-        }
-        if (fragment != null)
-            fm.beginTransaction().detach(fragment).commit();
-    }
+    //    @NonNull
+    //    @Override
+    //    public Fragment instantiateItem(@NonNull ViewGroup container, int position) {
+    //        Fragment fragment = (Fragment) super.instantiateItem(container, position);
+    //        fm.beginTransaction().show(fragment).commit();
+    //        return fragment;
+    //    }
+    //
+    //    @Override
+    //    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+    //        if (position >= getCount()) {
+    //            return;
+    //        }
+    //        Fragment fragment = null;
+    //        try {
+    //            fragment = (Fragment) fragmentNames.get(position).newInstance();
+    //        } catch (IllegalAccessException | InstantiationException e) {
+    //            e.printStackTrace();
+    //        }
+    //        if (fragment != null)
+    //            fm.beginTransaction().detach(fragment).commit();
+    //    }
 }

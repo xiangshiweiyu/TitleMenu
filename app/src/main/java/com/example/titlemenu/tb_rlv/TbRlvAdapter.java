@@ -22,7 +22,7 @@ import java.util.List;
  * UpdateName;
  * UpdateContent:
  */
-public class PageAdapter extends RecyclerView.Adapter<PageAdapter.PageViewHolder> {
+public class TbRlvAdapter extends RecyclerView.Adapter<TbRlvAdapter.PageViewHolder> {
 
     private static final String TAG = "TbRlvActivity";
     private Context mContext;
@@ -30,25 +30,23 @@ public class PageAdapter extends RecyclerView.Adapter<PageAdapter.PageViewHolder
     //    private HashMap<String, Integer> mMap;
 
 
-    public PageAdapter(Context context) {
+    TbRlvAdapter(Context context) {
         mContext = context;
         if (mTitle == null)
             mTitle = new ArrayList<>();
-        //
-        //        if (mMap == null)
-        //            mMap = new HashMap<>();
     }
 
-    public void setTitle(String title) {
+    void setTitle(String title) {
         if (mTitle != null)
             mTitle.add(title);
         notifyDataSetChanged();
     }
 
-    public void removeTitle(int pos) {
-        if (mTitle != null)
+    void removeTitle(int pos) {
+        if (mTitle != null && mTitle.size() > 1) {
             mTitle.remove(pos);
-        notifyItemRemoved(pos);
+            notifyItemRemoved(pos);
+        }
     }
 
     @NonNull
